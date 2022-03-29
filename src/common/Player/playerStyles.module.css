@@ -1,0 +1,89 @@
+.board {
+  width: 400px;
+  height: 400px;
+  border: 2px solid black;
+  margin: 1em 2em 2em 1em;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.board div {
+  width: 10%;
+  height: 10%;
+  box-sizing: border-box;
+  background: #e3eaf0;
+  border: 1px solid #b0b7be;
+  cursor: crosshair;
+  transition: background-color 100ms ease-in-out;
+}
+
+/* SQUARE COLORS */
+
+/* Empty */
+.empty {
+  background-color: #f1f3f5;
+}
+.empty:hover {
+  background-color: #ffec99;
+}
+
+/* Ship */
+
+.board .ship {
+  background-color: #495057;
+  border: 1px solid #495057;
+}
+
+.board .ship:hover {
+  background-color: #868e96;
+}
+
+/* Hit  */
+
+.board .hit {
+  background-color: #e8590c;
+  border: 1px solid  #e8590c;
+}
+
+/* Miss */
+
+.board .miss {
+  background-color: #15aabf;
+  border: 1px solid #e9ecef;
+}
+
+/* Sunk ship */
+
+.board .shipSunk {
+  background-color: #e03131;
+  border: 1px solid #e03131;
+  animation: shake 50ms 6 alternate backwards;
+}
+
+/* Forbidden square  */
+
+.board .forbidden {
+  background-color: #ffc9c9;
+  border: 1px solid #ffa8a8;
+}
+
+/* Option 1 */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Option 2 */
+@keyframes shake {
+  from {
+    transform: translate(30%, 17%);
+  }
+
+  to {
+    transform: translate(-30%, -17%);
+  }
+}
