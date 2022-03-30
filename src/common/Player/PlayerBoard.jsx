@@ -37,13 +37,14 @@ export default function PlayerBoard({
   layout = placedShips.reduce(
     (prevLayout, currentShip) =>
       currentShip.sunk
-        ? putEntityInLayout(prevLayout, currentShip, squateState.ship_sunk)
+        ? putEntityInLayout(prevLayout, currentShip, squateState.shipSunk)
         : prevLayout,
     layout
   );
 
   const isPlacingOverBoard =
     currentlyPlacing && currentlyPlacing.position != null;
+
   const canPlaceCurrentShip =
     isPlacingOverBoard && canBePlaced(currentlyPlacing, layout);
 
