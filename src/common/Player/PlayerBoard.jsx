@@ -10,6 +10,7 @@ import {
 } from "../Layout/Layout";
 
 import styles from "./playerStyles.module.css";
+import { useParams } from "react-router-dom";
 
 export default function PlayerBoard({
   currentlyPlacing,
@@ -18,8 +19,10 @@ export default function PlayerBoard({
   placeShip,
   placedShips,
   hitsByComputer,
+  prop
 }) {
-
+  const name = prop
+  console.log(name)
   // Player ships on empty layout
   let layout = placedShips.reduce(
     (prevLayout, currentShip) =>
@@ -87,7 +90,7 @@ export default function PlayerBoard({
 
   return (
     <div>
-      <h2 className={styles.playerTitle}>You</h2>
+      <h2 className={styles.playerTitle}>{name}</h2>
       <div className={styles.board}>{squares}</div>
     </div>
   );

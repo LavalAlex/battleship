@@ -56,15 +56,15 @@
 
 .board .shipSunk {
   background-color: #e03131;
-  border: 1px solid #e03131;
+  border: 1px solid c92a2a;
   animation: shake 50ms 6 alternate backwards;
 }
 
 /* Forbidden square  */
 
 .board .forbidden {
-  background-color: #ffc9c9;
-  border: 1px solid #ffa8a8;
+  background-color: #ff8787;
+  border: 1px solid red;
 }
 
 /* Option 1 */

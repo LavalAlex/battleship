@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import  GameView  from './GameView';
+import React, { useState, useRef } from "react";
+import GameView from "./GameView";
 import {
   placeAllComputerShips,
   squateState,
@@ -10,40 +10,39 @@ import {
   getNeighbors,
   updateSunkShips,
   coordsToIndex,
-} from '../Layout/Layout';
+} from "../Layout/Layout";
 
 const shipsAvailable = [
   {
-    name: 'carrier',
+    name: "carrier",
     length: 5,
     placed: null,
   },
   {
-    name: 'battleship',
+    name: "battleship",
     length: 4,
     placed: null,
   },
   {
-    name: 'cruiser',
+    name: "cruiser",
     length: 3,
     placed: null,
   },
   {
-    name: 'submarine',
+    name: "submarine",
     length: 3,
     placed: null,
   },
   {
-    name: 'destroyer',
+    name: "destroyer",
     length: 2,
     placed: null,
   },
 ];
 
-export default function Game(){
-  const [gameState, setGameState] = useState('placement');
+export default function Game() {
+  const [gameState, setGameState] = useState("placement");
   const [winner, setWinner] = useState(null);
-
   const [currentlyPlacing, setCurrentlyPlacing] = useState(null);
   const [placedShips, setPlacedShips] = useState([]);
   const [availableShips, setAvailableShips] = useState(shipsAvailable);
@@ -58,7 +57,7 @@ export default function Game(){
 
     setCurrentlyPlacing({
       ...shipToPlace,
-      orientation: 'horizontal',
+      orientation: "horizontal",
       position: null,
     });
   };
@@ -84,19 +83,21 @@ export default function Game(){
       setCurrentlyPlacing({
         ...currentlyPlacing,
         orientation:
-          currentlyPlacing.orientation === 'vertical' ? 'horizontal' : 'vertical',
+          currentlyPlacing.orientation === "vertical"
+            ? "horizontal"
+            : "vertical",
       });
     }
   };
 
   const startTurn = () => {
     generateComputerShips();
-    setGameState('player-turn');
+    setGameState("player-turn");
   };
 
   const changeTurn = () => {
     setGameState((oldGameState) =>
-      oldGameState === 'player-turn' ? 'computer-turn' : 'player-turn'
+      oldGameState === "player-turn" ? "computer-turn" : "player-turn"
     );
   };
 
@@ -108,8 +109,7 @@ export default function Game(){
 
   const computerFire = (index, layout) => {
     let computerHits;
-
-    if (layout[index] === 'ship') {
+    if (layout[index] === "ship") {
       computerHits = [
         ...hitsByComputer,
         {
@@ -118,7 +118,7 @@ export default function Game(){
         },
       ];
     }
-    if (layout[index] === 'empty') {
+    if (layout[index] === "empty") {
       computerHits = [
         ...hitsByComputer,
         {
@@ -156,27 +156,29 @@ export default function Game(){
     layout = placedShips.reduce(
       (prevLayout, currentShip) =>
         currentShip.sunk
-          ? putEntityInLayout(prevLayout, currentShip, squateState.ship_sunk)
+          ? putEntityInLayout(prevLayout, currentShip, squateState.shipSunk)
           : prevLayout,
       layout
     );
 
-    let successfulComputerHits = hitsByComputer.filter((hit) => hit.type === 'hit');
+    let successfulComputerHits = hitsByComputer.filter(
+      (hit) => hit.type === "hit"
+    );
 
     let nonSunkComputerHits = successfulComputerHits.filter((hit) => {
       const hitIndex = coordsToIndex(hit.position);
-      return layout[hitIndex] === 'hit';
+      return layout[hitIndex] === "hit";
     });
 
     let potentialTargets = nonSunkComputerHits
       .flatMap((hit) => getNeighbors(hit.position))
-      .filter((idx) => layout[idx] === 'empty' || layout[idx] === 'ship');
+      .filter((idx) => layout[idx] === "empty" || layout[idx] === "ship");
 
     // Until there's a successful hit
     if (potentialTargets.length === 0) {
       let layoutIndices = layout.map((item, idx) => idx);
       potentialTargets = layoutIndices.filter(
-        (index) => layout[index] === 'ship' || layout[index] === 'empty'
+        (index) => layout[index] === "ship" || layout[index] === "empty"
       );
     }
 
@@ -194,18 +196,21 @@ export default function Game(){
 
   // Check if either player or computer ended the game
   const checkIfGameOver = () => {
-    let successfulPlayerHits = hitsByPlayer.filter((hit) => hit.type === 'hit').length;
-    let successfulComputerHits = hitsByComputer.filter((hit) => hit.type === 'hit')
-      .length;
+    let successfulPlayerHits = hitsByPlayer.filter(
+      (hit) => hit.type === "hit"
+    ).length;
+    let successfulComputerHits = hitsByComputer.filter(
+      (hit) => hit.type === "hit"
+    ).length;
 
     if (successfulComputerHits === 17 || successfulPlayerHits === 17) {
-      setGameState('game-over');
+      setGameState("game-over");
 
       if (successfulComputerHits === 17) {
-        setWinner('computer');
+        setWinner("computer");
       }
       if (successfulPlayerHits === 17) {
-        setWinner('player');
+        setWinner("player");
       }
 
       return true;
@@ -215,7 +220,7 @@ export default function Game(){
   };
 
   const startAgain = () => {
-    setGameState('placement');
+    setGameState("placement");
     setWinner(null);
     setCurrentlyPlacing(null);
     setPlacedShips([]);
@@ -251,4 +256,4 @@ export default function Game(){
       />
     </React.Fragment>
   );
-};
+}
