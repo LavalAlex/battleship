@@ -42,9 +42,6 @@ export default function PlayerBoard({
     layout
   );
 
-  // console.log(layout)
-  // console.log(stateToClass)
-
   const isPlacingOverBoard =
     currentlyPlacing && currentlyPlacing.position != null;
   const canPlaceCurrentShip =
@@ -62,38 +59,6 @@ export default function PlayerBoard({
     }
   }
 
-  // return (
-  //   <div>
-  //     <h2 className={styles.playerTitle}>You</h2>
-  //     <div className={styles.board}>
-  //       {layout.map((square, index) => {
-  //         {/* console.log(square) */}
-  //             return (
-  //               <div
-  //                 onMouseDown={rotateShip}
-  //                 onClick={() => {
-  //                   if (canPlaceCurrentShip) {
-  //                     placeShip(currentlyPlacing);
-  //                   }
-  //                 }}
-  //                 className={styles[stateToClass[square]]}
-  //                 key={`square-${index}`}
-  //                 id={`square-${index}`}
-  //                 onMouseOver={() => {
-  //                   if (currentlyPlacing) {
-  //                     setCurrentlyPlacing({
-  //                       ...currentlyPlacing,
-  //                       position: indexToCoords(index),
-  //                     });
-  //                   }
-  //                 }}
-  //               />
-  //             );
-  //           })
-  //         }
-  //     </div>
-  //   </div>
-  // );
   let squares = layout.map((square, index) => {
     return (
       <div
