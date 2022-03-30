@@ -1,9 +1,10 @@
 import React from "react";
-
 import  PlayerFleet  from "../Player/PlayerFleet";
 import  PlayerBoard  from "../Player/PlayerBoard";
-// import { ComputerBoard } from "./ComputerBoard";
+import { ComputerBoard } from "../Computer/ComputerBoard";
 import  PlayerTips  from "../Player/PlayerTips";
+
+import styles from "./gameStyles.module.css"
 
 export default function GameView({
   availableShips,
@@ -28,7 +29,7 @@ export default function GameView({
   setComputerShips,
 }) {
   return (
-    <section id="game-screen">
+    <section id={styles.gameScreen}>
       {gameState !== "placement" ? (
         <PlayerTips
           gameState={gameState}
@@ -55,7 +56,8 @@ export default function GameView({
         placedShips={placedShips}
         hitsByComputer={hitsByComputer}
       />
-      {/* <ComputerBoard
+
+      <ComputerBoard
         computerShips={computerShips}
         changeTurn={changeTurn}
         gameState={gameState}
@@ -66,7 +68,7 @@ export default function GameView({
         checkIfGameOver={checkIfGameOver}
         setComputerShips={setComputerShips}
    
-      /> */}
+      />
     </section>
   );
 }

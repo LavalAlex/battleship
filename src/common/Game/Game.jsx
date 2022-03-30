@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import GameView  from "./GameView";
+import React, { useState, useRef } from 'react';
+import  GameView  from './GameView';
 import {
   placeAllComputerShips,
   squateState,
@@ -10,42 +10,43 @@ import {
   getNeighbors,
   updateSunkShips,
   coordsToIndex,
-} from "../Layout/Layout";
+} from '../Layout/Layout';
 
-const AVAILABLESHIPS = [
+const shipsAvailable = [
   {
-    name: "carrier",
+    name: 'carrier',
     length: 5,
     placed: null,
   },
   {
-    name: "battleship",
+    name: 'battleship',
     length: 4,
     placed: null,
   },
   {
-    name: "cruiser",
+    name: 'cruiser',
     length: 3,
     placed: null,
   },
   {
-    name: "submarine",
+    name: 'submarine',
     length: 3,
     placed: null,
   },
   {
-    name: "destroyer",
+    name: 'destroyer',
     length: 2,
     placed: null,
   },
 ];
-export default function Game() {
-  const [gameState, setGameState] = useState("placement");
+
+export default function Game(){
+  const [gameState, setGameState] = useState('placement');
   const [winner, setWinner] = useState(null);
 
   const [currentlyPlacing, setCurrentlyPlacing] = useState(null);
   const [placedShips, setPlacedShips] = useState([]);
-  const [availableShips, setAvailableShips] = useState(AVAILABLESHIPS);
+  const [availableShips, setAvailableShips] = useState(shipsAvailable);
   const [computerShips, setComputerShips] = useState([]);
   const [hitsByPlayer, setHitsByPlayer] = useState([]);
   const [hitsByComputer, setHitsByComputer] = useState([]);
@@ -57,7 +58,7 @@ export default function Game() {
 
     setCurrentlyPlacing({
       ...shipToPlace,
-      orientation: "horizontal",
+      orientation: 'horizontal',
       position: null,
     });
   };
@@ -83,21 +84,57 @@ export default function Game() {
       setCurrentlyPlacing({
         ...currentlyPlacing,
         orientation:
-          currentlyPlacing.orientation === "vertical"
-            ? "horizontal"
-            : "vertical",
+          currentlyPlacing.orientation === 'vertical' ? 'horizontal' : 'vertical',
       });
     }
   };
 
   const startTurn = () => {
-    setGameState("player-turn");
+    generateComputerShips();
+    setGameState('player-turn');
   };
 
   const changeTurn = () => {
     setGameState((oldGameState) =>
-      oldGameState === "player-turn" ? "computer-turn" : "player-turn"
+      oldGameState === 'player-turn' ? 'computer-turn' : 'player-turn'
     );
+  };
+
+  // *** COMPUTER ***
+  const generateComputerShips = () => {
+    let placedComputerShips = placeAllComputerShips(shipsAvailable.slice());
+    setComputerShips(placedComputerShips);
+  };
+
+  const computerFire = (index, layout) => {
+    let computerHits;
+
+    if (layout[index] === 'ship') {
+      computerHits = [
+        ...hitsByComputer,
+        {
+          position: indexToCoords(index),
+          type: squateState.hit,
+        },
+      ];
+    }
+    if (layout[index] === 'empty') {
+      computerHits = [
+        ...hitsByComputer,
+        {
+          position: indexToCoords(index),
+          type: squateState.miss,
+        },
+      ];
+    }
+    const sunkShips = updateSunkShips(computerHits, placedShips);
+    // const sunkShipsAfter = sunkShips.filter((ship) => ship.sunk).length;
+    // const sunkShipsBefore = placedShips.filter((ship) => ship.sunk).length;
+    // if (sunkShipsAfter > sunkShipsBefore) {
+    //   playSound('sunk');
+    // }
+    setPlacedShips(sunkShips);
+    setHitsByComputer(computerHits);
   };
 
   // Change to computer turn, check if game over and stop if yes; if not fire into an eligible square
@@ -129,24 +166,22 @@ export default function Game() {
       layout
     );
 
-    let successfulComputerHits = hitsByComputer.filter(
-      (hit) => hit.type === "hit"
-    );
+    let successfulComputerHits = hitsByComputer.filter((hit) => hit.type === 'hit');
 
     let nonSunkComputerHits = successfulComputerHits.filter((hit) => {
       const hitIndex = coordsToIndex(hit.position);
-      return layout[hitIndex] === "hit";
+      return layout[hitIndex] === 'hit';
     });
 
     let potentialTargets = nonSunkComputerHits
       .flatMap((hit) => getNeighbors(hit.position))
-      .filter((idx) => layout[idx] === "empty" || layout[idx] === "ship");
+      .filter((idx) => layout[idx] === 'empty' || layout[idx] === 'ship');
 
     // Until there's a successful hit
     if (potentialTargets.length === 0) {
       let layoutIndices = layout.map((item, idx) => idx);
       potentialTargets = layoutIndices.filter(
-        (index) => layout[index] === "ship" || layout[index] === "empty"
+        (index) => layout[index] === 'ship' || layout[index] === 'empty'
       );
     }
 
@@ -155,7 +190,7 @@ export default function Game() {
     let target = potentialTargets[randomIndex];
 
     setTimeout(() => {
-    //   computerFire(target, layout);
+      computerFire(target, layout);
       changeTurn();
     }, 300);
   };
@@ -164,23 +199,20 @@ export default function Game() {
 
   // Check if either player or computer ended the game
   const checkIfGameOver = () => {
-    let successfulPlayerHits = hitsByPlayer.filter(
-      (hit) => hit.type === "hit"
-    ).length;
-    let successfulComputerHits = hitsByComputer.filter(
-      (hit) => hit.type === "hit"
-    ).length;
+    let successfulPlayerHits = hitsByPlayer.filter((hit) => hit.type === 'hit').length;
+    let successfulComputerHits = hitsByComputer.filter((hit) => hit.type === 'hit')
+      .length;
 
     if (successfulComputerHits === 17 || successfulPlayerHits === 17) {
-      setGameState("game-over");
+      setGameState('game-over');
 
       if (successfulComputerHits === 17) {
-        setWinner("computer");
-      
+        setWinner('computer');
+        // playSound('lose');
       }
       if (successfulPlayerHits === 17) {
-        setWinner("player");
-        
+        setWinner('player');
+        // playSound('win');
       }
 
       return true;
@@ -190,19 +222,62 @@ export default function Game() {
   };
 
   const startAgain = () => {
-    setGameState("placement");
+    setGameState('placement');
     setWinner(null);
     setCurrentlyPlacing(null);
     setPlacedShips([]);
-    setAvailableShips(AVAILABLESHIPS);
+    setAvailableShips(shipsAvailable);
     setComputerShips([]);
     setHitsByPlayer([]);
     setHitsByComputer([]);
   };
 
+  // const sunkSoundRef = useRef(null);
+  // const clickSoundRef = useRef(null);
+  // const lossSoundRef = useRef(null);
+  // const winSoundRef = useRef(null);
 
+  // const stopSound = (sound) => {
+  //   sound.current.pause();
+  //   sound.current.currentTime = 0;
+  // };
+  // const playSound = (sound) => {
+  //   if (sound === 'sunk') {
+  //     stopSound(sunkSoundRef);
+  //     sunkSoundRef.current.play();
+  //   }
+
+  //   if (sound === 'click') {
+  //     stopSound(clickSoundRef);
+  //     clickSoundRef.current.play();
+  //   }
+
+  //   if (sound === 'lose') {
+  //     stopSound(lossSoundRef);
+  //     lossSoundRef.current.play();
+  //   }
+
+  //   if (sound === 'win') {
+  //     stopSound(winSoundRef);
+  //     winSoundRef.current.play();
+  //   }
+  // };
   return (
     <React.Fragment>
+      {/* <audio
+        ref={sunkSoundRef}
+        src="/sounds/ship_sunk.wav"
+        className="clip"
+        preload="auto"
+      />
+      <audio
+        ref={clickSoundRef}
+        src="/sounds/click.wav"
+        className="clip"
+        preload="auto"
+      />
+      <audio ref={lossSoundRef} src="/sounds/lose.wav" className="clip" preload="auto" />
+      <audio ref={winSoundRef} src="/sounds/win.wav" className="clip" preload="auto" /> */}
       <GameView
         availableShips={availableShips}
         selectShip={selectShip}
@@ -224,7 +299,8 @@ export default function Game() {
         startAgain={startAgain}
         winner={winner}
         setComputerShips={setComputerShips}
+        // playSound={playSound}
       />
     </React.Fragment>
   );
-}
+};

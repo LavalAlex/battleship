@@ -1,0 +1,12 @@
+
+#gameScreen {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  @media screen and (max-width: 1100px) {
+    #gameScreen {
+      flex-direction: column;
+    }
+  }

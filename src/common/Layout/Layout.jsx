@@ -46,7 +46,7 @@ export const entityIndices = (entity) => {
   let position = coordsToIndex(entity.position);
 
   let indices = [];
-  console.log(position)
+  // console.log(position)
   for (let i = 0; i < entity.length; i++) {
     indices.push(position);
     position =
@@ -248,3 +248,20 @@ export const getNeighbors = (coords) => {
   return filteredResult;
 };
 
+// Give ships a sunk flag to update their color
+export const updateSunkShips = (currentHits, opponentShips) => {
+  let playerHitIndices = currentHits.map((hit) => coordsToIndex(hit.position));
+
+  let indexWasHit = (index) => playerHitIndices.includes(index);
+
+  let shipsWithSunkFlag = opponentShips.map((ship) => {
+    let shipIndices = entityIndices2(ship);
+    if (shipIndices.every((idx) => indexWasHit(idx))) {
+      return { ...ship, sunk: true };
+    } else {
+      return { ...ship, sunk: false };
+    }
+  });
+
+  return shipsWithSunkFlag;
+};
