@@ -10,7 +10,7 @@ import {
   getNeighbors,
   updateSunkShips,
   coordsToIndex,
-} from "../Layout/Layout";
+} from "../Utils/Utils";
 
 const shipsAvailable = [
   {
@@ -49,6 +49,7 @@ export default function Game() {
   const [computerShips, setComputerShips] = useState([]);
   const [hitsByPlayer, setHitsByPlayer] = useState([]);
   const [hitsByComputer, setHitsByComputer] = useState([]);
+  const [surrender, setSurrender] = useState(false);
 
   // *** PLAYER ***
   const selectShip = (shipName) => {
@@ -203,6 +204,11 @@ export default function Game() {
       (hit) => hit.type === "hit"
     ).length;
 
+    if(surrender) {
+      setGameState('surrender')
+      setWinner("computer")
+    }
+
     if (successfulComputerHits === 17 || successfulPlayerHits === 17) {
       setGameState("game-over");
 
@@ -230,6 +236,10 @@ export default function Game() {
     setHitsByComputer([]);
   };
 
+  const handleSurrender = () => {
+    setSurrender(true);
+    checkIfGameOver()
+  };
   return (
     <React.Fragment>
       <GameView
@@ -253,6 +263,7 @@ export default function Game() {
         startAgain={startAgain}
         winner={winner}
         setComputerShips={setComputerShips}
+        handleSurrender={handleSurrender}
       />
     </React.Fragment>
   );

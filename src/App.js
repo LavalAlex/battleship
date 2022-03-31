@@ -5,12 +5,12 @@ import StartGame from "./common/Start/StartGame";
 
 function App() {
   return (
-    <BrowserRouter>
+
       <Routes>
         <Route path="/" element={<StartGame />} />
-        <Route path="/game/:name" element={<Game />} />
+        <Route path="/game" element={<Game />} />
       </Routes>
-    </BrowserRouter>
+
   );
 }
 

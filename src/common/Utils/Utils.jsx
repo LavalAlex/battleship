@@ -46,7 +46,6 @@ export const entityIndices = (entity) => {
   let position = coordsToIndex(entity.position);
 
   let indices = [];
-  // console.log(position)
   for (let i = 0; i < entity.length; i++) {
     indices.push(position);
     position =

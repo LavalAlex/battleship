@@ -27,6 +27,7 @@ export default function GameView({
   winner,
   startAgain,
   setComputerShips,
+  handleSurrender
 }) {
   return (
     <section id={styles.gameScreen}>
@@ -37,6 +38,7 @@ export default function GameView({
           hitsByComputer={hitsByComputer}
           winner={winner}
           startAgain={startAgain}
+          handleSurrender={handleSurrender}
         />
       ) : (
         <PlayerFleet

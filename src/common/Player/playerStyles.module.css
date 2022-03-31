@@ -21,7 +21,7 @@
 
 /* Empty */
 .empty {
-  background-color: #f1f3f5;
+  background-color: #f5f5f5;
 }
 .empty:hover {
   background-color: #ffec99;
@@ -30,8 +30,8 @@
 /* Ship */
 
 .board .ship {
-  background-color: #495057;
-  border: 1px solid #495057;
+  background-color: #868e96;
+  border: 1px solid #868e96;
 }
 
 .board .ship:hover {
@@ -41,15 +41,15 @@
 /* Hit  */
 
 .board .hit {
-  background-color: #fab005;;
-  border: 1px solid  #fab005;;
+  background-color: #f08c00;;
+  border: 1px solid  #f08c00;;
 }
 
 /* Miss */
 
 .board .miss {
-  background-color: #15aabf;
-  border: 1px solid #e9ecef;
+  background-color: #3bc9db;
+  border: 1px solid #3bc9db;
 }
 
 /* Sunk ship */
@@ -86,4 +86,90 @@
   to {
     transform: translate(-30%, -17%);
   }
+}
+
+.tipFrame{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  
+}
+
+.tipBoxTitle {
+  font-size: 22px;
+  text-transform: uppercase;
+  color: #f03e3e;
+  margin-bottom: 2rem;
+  justify-content: center;
+  /* margin-left: 60px; */
+}
+
+.availableShips {
+  width: 200px;
+  max-height: 500px;
+  padding: 1rem;
+  font-family: 'Asul', sans-serif;
+  text-align: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tipsButton button{
+  height: 2rem;
+  width: 6rem;
+  border: solid 2px;
+  cursor: pointer;
+  text-transform: capitalize;
+  font-family: 'Libre Franklin', sans-serif;
+  border-radius: 5px;
+}
+
+.tipsButton button:hover{
+  background-color: #15aabf;
+
+}
+
+.selectFleet{
+  height: 390px;
+}
+
+.tipSurrender span{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.tipSurrender button{
+  height: 2rem;
+  width: 6rem;
+  border: solid 2px;
+  cursor: pointer;
+  text-transform: capitalize;
+  font-family: 'Libre Franklin', sans-serif;
+  border-radius: 5px;
+}
+
+.tipSurrender button:hover{
+  background-color: #fa5252;
+
+}
+
+.playerTips{
+  width: 220px;
+  /* margin-left: 10px;
+  margin-right: 10px; */
+  display: flex;
+  justify-content: center;
+}
+
+.playerTitle{
+ 
+  font-size: 22px;
+  text-transform: uppercase;
+  color: #f03e3e;
+  /* margin-bottom: 2rem; */
+
 }

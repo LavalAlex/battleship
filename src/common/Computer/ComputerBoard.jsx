@@ -6,7 +6,7 @@ import {
   squateState,
   indexToCoords,
   updateSunkShips,
-} from '../Layout/Layout';
+} from '../Utils/Utils';
 
 import styles from "./computerStyles.module.css"
 
@@ -94,7 +94,6 @@ export const ComputerBoard = ({
           if (playerCanFire && !alreadyHit(index)) {
             const newHits = fireTorpedo(index);
             const shipsWithSunkFlag = updateSunkShips(newHits, computerShips);
-       
             setComputerShips(shipsWithSunkFlag);
             handleComputerTurn();
           }
@@ -105,7 +104,7 @@ export const ComputerBoard = ({
 
   return (
     <div>
-      <h2 className={styles.playerTitle}>CPU</h2>
+      <div className={styles.playerTitle}>CPU</div>
       <div className={styles.board}>{compSquares}</div>
     </div>
   );

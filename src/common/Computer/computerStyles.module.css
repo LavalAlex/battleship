@@ -21,7 +21,7 @@
   
   /* Empty */
   .empty {
-    background-color: #f1f3f5;
+    background-color: #f8f9fa;
   }
   .empty:hover {
     background-color: #ffec99;
@@ -41,15 +41,15 @@
   /* Hit  */
   
   .board .hit {
-    background-color: #fab005;;
-    border: 1px solid  #fab005;;
+    background-color: #f08c00;;
+    border: 1px solid  #f08c00;;
   }
   
   /* Miss */
   
   .board .miss {
-    background-color: #15aabf;
-    border: 1px solid #e9ecef;
+    background-color: #3bc9db;
+    border: 1px solid #3bc9db;
   }
   
   /* Sunk ship */
@@ -105,4 +105,11 @@
     border: 1px solid #b0b7be;
     cursor: crosshair;
     transition: background-color 100ms ease-in-out;
+  }
+
+  .playerTitle{
+  text-transform: uppercase;
+  font-size: 22px;
+  text-transform: uppercase;
+  color: #f03e3e;
   }

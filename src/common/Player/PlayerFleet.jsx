@@ -27,24 +27,29 @@ export default function PlayerFleet({
   ));
 
   return (
-    <div id={styles.availableShips}>
+    <div className={styles.availableShips}>
       <div className={styles.tipBoxTitle}> Your Ships</div>
       {availableShips.length > 0 ? (
-        <div id={styles.replicaFleet}>
+        <div className={styles.selectFleet}>
           {shipSelectBoxs}
           <p className={styles.playerTip}>
             Right click to rotate before you position.
           </p>
-          <p className={styles.restart} onClick={startAgain}>
+          <div  className={styles.tipsButton} >
+          <button onClick={startAgain}>
             Restart
-          </p>
+          </button>
+          </div>
         </div>
       ) : (
         <div id={styles.playReady}>
           <p className={styles.playerTip}>Ships are in formation.</p>
-          <button id={styles.playButton} onClick={startTurn}>
+          <div className={styles.tipsButton}>
+
+          <button  onClick={startTurn}>
             Start game
           </button>
+          </div>
         </div>
       )}
     </div>
