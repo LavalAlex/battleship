@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   squateState,
   stateToClass,
@@ -19,11 +19,14 @@ export default function PlayerBoard({
   placeShip,
   placedShips,
   hitsByComputer,
-
+  playerName
 }) {
-  const playerName = useSelector((state) => state)
-  // const [playerName, setName] = useState("Alex")
   
+  // const [name, setName] = useState("")
+  // const playerName = useSelector((state) => state.player)
+  // setName('hola')
+  // console.log(name)
+
   // Player ships on empty layout
   let layout = placedShips.reduce(
     (prevLayout, currentShip) =>
@@ -92,7 +95,7 @@ export default function PlayerBoard({
 
   return (
     <div>
-      <div className={styles.playerTitle}>{playerName.name}</div>
+      <div className={styles.playerTitle}>{playerName}</div>
       <div className={styles.board}>{squares}</div>
   
     </div>

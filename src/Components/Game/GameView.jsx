@@ -6,6 +6,7 @@ import  PlayerTips  from "../Player/PlayerTips";
 
 import styles from "./gameStyles.module.css"
 
+
 export default function GameView({
   availableShips,
   selectShip,
@@ -27,7 +28,8 @@ export default function GameView({
   winner,
   startAgain,
   setComputerShips,
-  handleSurrender
+  handleSurrender,
+  playerName
 }) {
   return (
     <section id={styles.gameScreen}>
@@ -57,6 +59,7 @@ export default function GameView({
         placeShip={placeShip}
         placedShips={placedShips}
         hitsByComputer={hitsByComputer}
+        playerName= {playerName}
       />
 
       <ComputerBoard

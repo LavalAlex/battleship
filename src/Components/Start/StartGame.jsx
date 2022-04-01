@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Navigate} from "react-router-dom";
 import { generateEmptyLayout} from "../Utils/Utils";
 import styles from "./stylesStart.module.css";
-import { playerName } from "../../Redux/Actions";
+import { playerName } from "../../Redux/Actions/index";
 import { useDispatch } from "react-redux";
 
 export default function StartGame() {

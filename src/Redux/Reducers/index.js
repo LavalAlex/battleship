@@ -1,18 +1,10 @@
-import { NAME } from "../Actions/ActionsTypes";
+import { combineReducers } from 'redux'
+import playerReducer from './player'
+import computerReducer from './computer'
 
-const initialState = {
-  name: "",
-};
+const reducers = combineReducers({
+  player: playerReducer,
+  computer: computerReducer
+})
 
-export default function rootReducer(state = initialState, action) {
-  switch (action.type) {
-    case NAME:
-      return {
-        ...state,
-        name: action.payload,
-      };
-
-      default:
-      return state;
-  }
-}
+export default reducers

@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import GameView from "./GameView";
 import {
   placeAllComputerShips,
@@ -11,6 +11,18 @@ import {
   updateSunkShips,
   coordsToIndex,
 } from "../Utils/Utils";
+
+import {
+  computerBoard,
+  computerBoardClear,
+  computerHit,
+  computerHitClear,
+  playerBoard,
+  playerBoardClear,
+  playerHits,
+  playerHitsClear,
+} from "../../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const shipsAvailable = [
   {
@@ -41,15 +53,35 @@ const shipsAvailable = [
 ];
 
 export default function Game() {
+  const dispatch = useDispatch();
+  const placedShips = useSelector((state) => state.player.board || []);
+  const computerShips = useSelector((state) => state.computer.board || []);
+  const hitsByPlayer = useSelector((state) => state.player.hits || []);
+  const hitsByComputer = useSelector((state) => state.computer.hits || []);
+  const playerName = useSelector((state) => state.player.name);
   const [gameState, setGameState] = useState("placement");
   const [winner, setWinner] = useState(null);
   const [currentlyPlacing, setCurrentlyPlacing] = useState(null);
-  const [placedShips, setPlacedShips] = useState([]);
   const [availableShips, setAvailableShips] = useState(shipsAvailable);
-  const [computerShips, setComputerShips] = useState([]);
-  const [hitsByPlayer, setHitsByPlayer] = useState([]);
-  const [hitsByComputer, setHitsByComputer] = useState([]);
   const [surrender, setSurrender] = useState(false);
+  const [nickName, setNick] = useState(null)
+
+  const setPlayerBoard = (placedShips) =>{
+    dispatch(playerBoard(placedShips))
+  }
+  
+  const setHitsByComputer =(computerHits) =>{
+    dispatch(computerHit(computerHits))
+  }
+
+  const setComputerShips = (placedShips) => {
+    dispatch(computerBoard(placedShips));
+  };
+
+  const setHitsByPlayer = (hits) => {
+    dispatch(playerHits(hits));
+  };
+
 
   // *** PLAYER ***
   const selectShip = (shipName) => {
@@ -64,13 +96,14 @@ export default function Game() {
   };
 
   const placeShip = (currentlyPlacing) => {
-    setPlacedShips([
-      ...placedShips,
-      {
-        ...currentlyPlacing,
-        placed: true,
-      },
-    ]);
+    setPlayerBoard([
+        ...placedShips,
+        {
+          ...currentlyPlacing,
+          placed: true,
+        },
+      ])
+
 
     setAvailableShips((previousShips) =>
       previousShips.filter((ship) => ship.name !== currentlyPlacing.name)
@@ -129,7 +162,8 @@ export default function Game() {
       ];
     }
     const sunkShips = updateSunkShips(computerHits, placedShips);
-    setPlacedShips(sunkShips);
+    setPlayerBoard(sunkShips);
+    // dispatch(computerHit(computerHits))
     setHitsByComputer(computerHits);
   };
 
@@ -204,9 +238,9 @@ export default function Game() {
       (hit) => hit.type === "hit"
     ).length;
 
-    if(surrender) {
-      setGameState('surrender')
-      setWinner("computer")
+    if (surrender) {
+      setGameState("surrender");
+      setWinner("computer");
     }
 
     if (successfulComputerHits === 17 || successfulPlayerHits === 17) {
@@ -226,20 +260,22 @@ export default function Game() {
   };
 
   const startAgain = () => {
+    setNick(playerName)
     setGameState("placement");
     setWinner(null);
     setCurrentlyPlacing(null);
-    setPlacedShips([]);
     setAvailableShips(shipsAvailable);
-    setComputerShips([]);
-    setHitsByPlayer([]);
-    setHitsByComputer([]);
+    dispatch(playerBoardClear());
+    dispatch(computerBoardClear());
+    dispatch(playerHitsClear());
+    dispatch(computerHitClear());
   };
 
   const handleSurrender = () => {
     setSurrender(true);
-    checkIfGameOver()
+    checkIfGameOver();
   };
+
   return (
     <React.Fragment>
       <GameView
@@ -264,6 +300,7 @@ export default function Game() {
         winner={winner}
         setComputerShips={setComputerShips}
         handleSurrender={handleSurrender}
+        playerName = {!nickName?playerName: nickName}
       />
     </React.Fragment>
   );
