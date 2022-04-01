@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./playerStyles.module.css";
 
 export default function PlayerTips({
@@ -9,6 +9,7 @@ export default function PlayerTips({
   winner,
   handleSurrender,
 }) {
+
   let numberOfHits = hitsbyPlayer.length;
   let numberOfSuccessfulHits = hitsbyPlayer.filter(
     (hit) => hit.type === "hit"

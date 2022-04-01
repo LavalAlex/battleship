@@ -1,16 +1,18 @@
+import React from "react";
+import  ReactDOM  from "react-dom";
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Game from "./common/Game/Game";
-import StartGame from "./common/Start/StartGame";
+import { Route, Routes } from "react-router";
+import Game from "./Components/Game/Game";
+import StartGame from "./Components/Start/StartGame";
 
 function App() {
   return (
-
+    <div className="App">
       <Routes>
         <Route path="/" element={<StartGame />} />
         <Route path="/game" element={<Game />} />
       </Routes>
-
+    </div>
   );
 }
 

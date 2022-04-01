@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   squateState,
   stateToClass,
@@ -10,7 +10,6 @@ import {
 } from "../Utils/Utils";
 
 import styles from "./playerStyles.module.css";
-// import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function PlayerBoard({

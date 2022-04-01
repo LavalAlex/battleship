@@ -41,22 +41,22 @@
   /* Hit  */
   
   .board .hit {
-    background-color: #f08c00;;
-    border: 1px solid  #f08c00;;
+    background-color: orange;
+    border: 1px solid  orange;
   }
   
   /* Miss */
   
   .board .miss {
-    background-color: #3bc9db;
-    border: 1px solid #3bc9db;
+    background-color: blue;
+    border: 1px solid blue;
   }
   
   /* Sunk ship */
   
   .board .shipSunk {
-    background-color: #e03131;
-    border: 1px solid #e03131;
+    background-color: red;
+    border: 1px solid red;
     animation: shake 50ms 6 alternate backwards;
   }
   

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link, Navigate, Redirect } from "react-router-dom";
-import { generateEmptyLayout, putEntityInLayout } from "../Utils/Utils";
+import { Navigate} from "react-router-dom";
+import { generateEmptyLayout} from "../Utils/Utils";
 import styles from "./stylesStart.module.css";
 import { playerName } from "../../Redux/Actions";
 import { useDispatch } from "react-redux";
@@ -50,7 +50,7 @@ export default function StartGame() {
     <Navigate to="/game" />
   ) : (
     <div className={styles.frame}>
-      <div>
+      <div> 
       <div className={styles.title}>BATTLESHIP</div>
       <div className={styles.board}>{squares}</div>
       </div>
