@@ -10,7 +10,6 @@ export default function PlayerFleet({
   startTurn,
   startAgain,
 }) {
-  
   let shipsLeft = availableShips.map((ship) => ship.name);
 
   // For every ship still available, return a Replica Box with the ship's name and as many squares as its length
@@ -35,20 +34,15 @@ export default function PlayerFleet({
           <p className={styles.playerTip}>
             Right click to rotate before you position.
           </p>
-          <div  className={styles.tipsButton} >
-          <button onClick={startAgain}>
-            Restart
-          </button>
+          <div className={styles.tipsButton}>
+            <button onClick={startAgain}>Restart</button>
           </div>
         </div>
       ) : (
         <div id={styles.playReady}>
           <p className={styles.playerTip}>Ships are in formation.</p>
           <div className={styles.tipsButton}>
-
-          <button  onClick={startTurn}>
-            Start game
-          </button>
+            <button onClick={startTurn}>Start Game</button>
           </div>
         </div>
       )}

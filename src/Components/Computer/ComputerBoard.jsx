@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   stateToClass,
   generateEmptyLayout,
@@ -6,9 +6,9 @@ import {
   squateState,
   indexToCoords,
   updateSunkShips,
-} from '../Utils/Utils';
+} from "../Utils/Utils";
 
-import styles from "./computerStyles.module.css"
+import styles from "./computerStyles.module.css";
 
 export const ComputerBoard = ({
   computerShips,
@@ -44,7 +44,7 @@ export const ComputerBoard = ({
 
   // Check what's at the square and decide what next
   const fireTorpedo = (index) => {
-    if (compLayout[index] === 'ship') {
+    if (compLayout[index] === "ship") {
       const newHits = [
         ...hitsByPlayer,
         {
@@ -55,7 +55,7 @@ export const ComputerBoard = ({
       setHitsByPlayer(newHits);
       return newHits;
     }
-    if (compLayout[index] === 'empty') {
+    if (compLayout[index] === "empty") {
       const newHits = [
         ...hitsByPlayer,
         {
@@ -68,23 +68,23 @@ export const ComputerBoard = ({
     }
   };
 
-  const playerTurn = gameState === 'player-turn';
+  const playerTurn = gameState === "player-turn";
   const playerCanFire = playerTurn && !checkIfGameOver();
 
   let alreadyHit = (index) =>
-    compLayout[index] === 'hit' ||
-    compLayout[index] === 'miss' ||
-    compLayout[index] === 'shipSunk';
+    compLayout[index] === "hit" ||
+    compLayout[index] === "miss" ||
+    compLayout[index] === "shipSunk";
 
   let compSquares = compLayout.map((square, index) => {
-    //   console.log('state: ',stateToClass[square])
+ 
     return (
       <div
         // Only display square if it's a hit, miss, or sunk ship
         className={
-          stateToClass[square] === 'hit' ||
-          stateToClass[square] === 'miss' ||
-          stateToClass[square] === 'shipSunk'
+          stateToClass[square] === "hit" ||
+          stateToClass[square] === "miss" ||
+          stateToClass[square] === "shipSunk"
             ? styles[stateToClass[square]]
             : styles.square
         }

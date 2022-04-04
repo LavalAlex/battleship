@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './selectBox.module.css'
+import styles from "./selectBox.module.css";
 
 export default function SelectBox({
   shipName,
@@ -9,9 +9,9 @@ export default function SelectBox({
 }) {
   
   let ship = availableShips.find((item) => item.name === shipName);
-  
+
   let shipLength = new Array(ship.length).fill("ship");
-  
+
   let allSquares = shipLength.map((item, index) => (
     <div className={styles.smallSquare} key={index} />
   ));

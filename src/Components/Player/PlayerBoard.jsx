@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   squateState,
   stateToClass,
@@ -8,9 +8,9 @@ import {
   calculateOverhang,
   canBePlaced,
 } from "../Utils/Utils";
+import { useParams} from "react-router-dom";
 
 import styles from "./playerStyles.module.css";
-import { useSelector } from "react-redux";
 
 export default function PlayerBoard({
   currentlyPlacing,
@@ -19,21 +19,15 @@ export default function PlayerBoard({
   placeShip,
   placedShips,
   hitsByComputer,
-  playerName
 }) {
-  
-  // const [name, setName] = useState("")
-  // const playerName = useSelector((state) => state.player)
-  // setName('hola')
-  // console.log(name)
+  const {name} = useParams()
 
   // Player ships on empty layout
   let layout = placedShips.reduce(
     (prevLayout, currentShip) =>
-    putEntityInLayout(prevLayout, currentShip, squateState.ship),
+      putEntityInLayout(prevLayout, currentShip, squateState.ship),
     generateEmptyLayout()
-    );
-    // setName("name")
+  );
 
   // Hits by computer
   layout = hitsByComputer.reduce(
@@ -74,7 +68,6 @@ export default function PlayerBoard({
         onMouseDown={rotateShip}
         onClick={() => {
           if (canPlaceCurrentShip) {
-         
             placeShip(currentlyPlacing);
           }
         }}
@@ -95,9 +88,8 @@ export default function PlayerBoard({
 
   return (
     <div>
-      <div className={styles.playerTitle}>{playerName}</div>
+      <div className={styles.playerTitle}>{name}</div>
       <div className={styles.board}>{squares}</div>
-  
     </div>
   );
 }

@@ -1,17 +1,23 @@
 import React from "react";
-import  ReactDOM  from "react-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import "./App.css";
-import { Route, Routes } from "react-router";
 import Game from "./Components/Game/Game";
 import StartGame from "./Components/Start/StartGame";
 
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<StartGame />} />
-        <Route path="/game" element={<Game />} />
-      </Routes>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <StartGame />
+          </Route>
+          <Route path="/game/:name?">
+            <Game />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }

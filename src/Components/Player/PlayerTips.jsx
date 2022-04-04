@@ -9,7 +9,7 @@ export default function PlayerTips({
   winner,
   handleSurrender,
 }) {
-
+  
   let numberOfHits = hitsbyPlayer.length;
   let numberOfSuccessfulHits = hitsbyPlayer.filter(
     (hit) => hit.type === "hit"

@@ -23,34 +23,7 @@ import {
   playerHitsClear,
 } from "../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
-
-const shipsAvailable = [
-  {
-    name: "carrier",
-    length: 5,
-    placed: null,
-  },
-  {
-    name: "battleship",
-    length: 4,
-    placed: null,
-  },
-  {
-    name: "cruiser",
-    length: 3,
-    placed: null,
-  },
-  {
-    name: "submarine",
-    length: 3,
-    placed: null,
-  },
-  {
-    name: "destroyer",
-    length: 2,
-    placed: null,
-  },
-];
+import { shipsAvailable } from "../Mock/gameMock";
 
 export default function Game() {
   const dispatch = useDispatch();
@@ -58,21 +31,19 @@ export default function Game() {
   const computerShips = useSelector((state) => state.computer.board || []);
   const hitsByPlayer = useSelector((state) => state.player.hits || []);
   const hitsByComputer = useSelector((state) => state.computer.hits || []);
-  const playerName = useSelector((state) => state.player.name);
   const [gameState, setGameState] = useState("placement");
   const [winner, setWinner] = useState(null);
   const [currentlyPlacing, setCurrentlyPlacing] = useState(null);
   const [availableShips, setAvailableShips] = useState(shipsAvailable);
   const [surrender, setSurrender] = useState(false);
-  const [nickName, setNick] = useState(null)
 
-  const setPlayerBoard = (placedShips) =>{
-    dispatch(playerBoard(placedShips))
-  }
-  
-  const setHitsByComputer =(computerHits) =>{
-    dispatch(computerHit(computerHits))
-  }
+  const setPlayerBoard = (placedShips) => {
+    dispatch(playerBoard(placedShips));
+  };
+
+  const setHitsByComputer = (computerHits) => {
+    dispatch(computerHit(computerHits));
+  };
 
   const setComputerShips = (placedShips) => {
     dispatch(computerBoard(placedShips));
@@ -81,7 +52,6 @@ export default function Game() {
   const setHitsByPlayer = (hits) => {
     dispatch(playerHits(hits));
   };
-
 
   // *** PLAYER ***
   const selectShip = (shipName) => {
@@ -97,13 +67,12 @@ export default function Game() {
 
   const placeShip = (currentlyPlacing) => {
     setPlayerBoard([
-        ...placedShips,
-        {
-          ...currentlyPlacing,
-          placed: true,
-        },
-      ])
-
+      ...placedShips,
+      {
+        ...currentlyPlacing,
+        placed: true,
+      },
+    ]);
 
     setAvailableShips((previousShips) =>
       previousShips.filter((ship) => ship.name !== currentlyPlacing.name)
@@ -260,7 +229,7 @@ export default function Game() {
   };
 
   const startAgain = () => {
-    setNick(playerName)
+    // setNick(playerName);
     setGameState("placement");
     setWinner(null);
     setCurrentlyPlacing(null);
@@ -275,7 +244,7 @@ export default function Game() {
     setSurrender(true);
     checkIfGameOver();
   };
-
+  // console.log(nickName)
   return (
     <React.Fragment>
       <GameView
@@ -300,7 +269,7 @@ export default function Game() {
         winner={winner}
         setComputerShips={setComputerShips}
         handleSurrender={handleSurrender}
-        playerName = {!nickName?playerName: nickName}
+        // playerName={!nickName ? playerName : nickName}
       />
     </React.Fragment>
   );

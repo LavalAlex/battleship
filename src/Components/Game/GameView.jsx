@@ -1,11 +1,10 @@
 import React from "react";
-import  PlayerFleet  from "../Player/PlayerFleet";
-import  PlayerBoard  from "../Player/PlayerBoard";
+import PlayerFleet from "../Player/PlayerFleet";
+import PlayerBoard from "../Player/PlayerBoard";
 import { ComputerBoard } from "../Computer/ComputerBoard";
-import  PlayerTips  from "../Player/PlayerTips";
+import PlayerTips from "../Player/PlayerTips";
 
-import styles from "./gameStyles.module.css"
-
+import styles from "./gameStyles.module.css";
 
 export default function GameView({
   availableShips,
@@ -29,7 +28,6 @@ export default function GameView({
   startAgain,
   setComputerShips,
   handleSurrender,
-  playerName
 }) {
   return (
     <section id={styles.gameScreen}>
@@ -59,7 +57,6 @@ export default function GameView({
         placeShip={placeShip}
         placedShips={placedShips}
         hitsByComputer={hitsByComputer}
-        playerName= {playerName}
       />
 
       <ComputerBoard
@@ -72,7 +69,6 @@ export default function GameView({
         handleComputerTurn={handleComputerTurn}
         checkIfGameOver={checkIfGameOver}
         setComputerShips={setComputerShips}
-   
       />
     </section>
   );
