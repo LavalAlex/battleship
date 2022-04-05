@@ -1,4 +1,4 @@
-import { HITSPLAYER, HITSPLAYERCLEAR, NAME, PLAYERBOAR, PLAYERBOARCLEAR } from "./ActionsTypes";
+import { HITSPLAYER, HITSPLAYERCLEAR, NAME, PLAYERBOAR, PLAYERBOARCLEAR} from "./ActionsTypes";
 
 export function playerName(payload) {
   return {
@@ -32,3 +32,4 @@ export function playerHitsClear(){
     type: HITSPLAYERCLEAR
   }
 }
+

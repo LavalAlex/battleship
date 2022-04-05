@@ -1,26 +1,26 @@
 export const shipsAvailable = [
     {
       name: "carrier",
-      length: 5,
-      placed: null,
-    },
-    {
-      name: "battleship",
       length: 4,
       placed: null,
     },
     {
-      name: "cruiser",
+      name: "cruiser-01",
+      length: 3,
+      placed: null,
+    },
+    {
+      name: "cruiser-02",
+      length: 3,
+      placed: null,
+    },
+    {
+      name: "cruiser-03",
       length: 3,
       placed: null,
     },
     {
       name: "submarine",
-      length: 3,
-      placed: null,
-    },
-    {
-      name: "destroyer",
       length: 2,
       placed: null,
     },

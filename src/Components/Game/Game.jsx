@@ -21,9 +21,12 @@ import {
   playerBoardClear,
   playerHits,
   playerHitsClear,
+  gameWinner
 } from "../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import { shipsAvailable } from "../Mock/gameMock";
+import { useParams } from "react-router-dom";
+
 
 export default function Game() {
   const dispatch = useDispatch();
@@ -31,11 +34,12 @@ export default function Game() {
   const computerShips = useSelector((state) => state.computer.board || []);
   const hitsByPlayer = useSelector((state) => state.player.hits || []);
   const hitsByComputer = useSelector((state) => state.computer.hits || []);
+  const winner = useSelector((state) => state.game.winner || null)
   const [gameState, setGameState] = useState("placement");
-  const [winner, setWinner] = useState(null);
   const [currentlyPlacing, setCurrentlyPlacing] = useState(null);
   const [availableShips, setAvailableShips] = useState(shipsAvailable);
   const [surrender, setSurrender] = useState(false);
+  const {name} = useParams()
 
   const setPlayerBoard = (placedShips) => {
     dispatch(playerBoard(placedShips));
@@ -53,6 +57,9 @@ export default function Game() {
     dispatch(playerHits(hits));
   };
 
+  const setWinner = (state) =>{
+    dispatch(gameWinner(state))
+  }
   // *** PLAYER ***
   const selectShip = (shipName) => {
     let shipIdx = availableShips.findIndex((ship) => ship.name === shipName);
@@ -132,7 +139,6 @@ export default function Game() {
     }
     const sunkShips = updateSunkShips(computerHits, placedShips);
     setPlayerBoard(sunkShips);
-    // dispatch(computerHit(computerHits))
     setHitsByComputer(computerHits);
   };
 
@@ -212,13 +218,13 @@ export default function Game() {
       setWinner("computer");
     }
 
-    if (successfulComputerHits === 17 || successfulPlayerHits === 17) {
+    if (successfulComputerHits === 15 || successfulPlayerHits === 15) {
       setGameState("game-over");
-
-      if (successfulComputerHits === 17) {
+      console.log('game-over')
+      if (successfulComputerHits === 15) {
         setWinner("computer");
       }
-      if (successfulPlayerHits === 17) {
+      if (successfulPlayerHits === 15) {
         setWinner("player");
       }
 
@@ -229,7 +235,6 @@ export default function Game() {
   };
 
   const startAgain = () => {
-    // setNick(playerName);
     setGameState("placement");
     setWinner(null);
     setCurrentlyPlacing(null);
@@ -241,10 +246,10 @@ export default function Game() {
   };
 
   const handleSurrender = () => {
-    setSurrender(true);
-    checkIfGameOver();
+    setWinner("surrender");
+  
   };
-  // console.log(nickName)
+
   return (
     <React.Fragment>
       <GameView
@@ -269,7 +274,7 @@ export default function Game() {
         winner={winner}
         setComputerShips={setComputerShips}
         handleSurrender={handleSurrender}
-        // playerName={!nickName ? playerName : nickName}
+        palyerName={name}
       />
     </React.Fragment>
   );

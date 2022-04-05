@@ -1,26 +1,26 @@
 export const shipsAvailable = [
   {
     name: "carrier",
-    length: 5,
-    placed: null,
-  },
-  {
-    name: "battleship",
     length: 4,
     placed: null,
   },
   {
-    name: "cruiser",
+    name: "cruiser-01",
+    length: 3,
+    placed: null,
+  },
+  {
+    name: "cruiser-02",
+    length: 3,
+    placed: null,
+  },
+  {
+    name: "cruiser-03",
     length: 3,
     placed: null,
   },
   {
     name: "submarine",
-    length: 3,
-    placed: null,
-  },
-  {
-    name: "destroyer",
     length: 2,
     placed: null,
   },
@@ -28,29 +28,29 @@ export const shipsAvailable = [
 
 export const ships = [
   {
-    length: 5,
+    length: 4,
     name: "carrier",
     orientation: "horizontal",
     placed: true,
     position: { x: 2, y: 1 },
   },
   {
-    length: 4,
-    name: "battleship",
+    length: 3,
+    name: "cruiser-01",
     orientation: "horizontal",
     placed: true,
     position: { x: 1, y: 8 },
   },
   {
     length: 3,
-    name: "cruiser",
+    name: "cruiser-02",
     orientation: "horizontal",
     placed: true,
     position: { x: 1, y: 0 },
   },
   {
     length: 2,
-    name: "destroyer",
+    name: "submarine",
     orientation: "vertical",
     placed: true,
     position: { x: 7, y: 2 },
@@ -98,7 +98,7 @@ export const hits = [
 
 export const hitsTest = () => {
   var hits = [];
-  for (var i = 0; i < 17; i++) {
+  for (var i = 0; i < 15; i++) {
     hits.push({ position: { x: 8, y: i }, type: "hit" });
   }
   return hits;

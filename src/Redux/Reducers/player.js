@@ -4,12 +4,14 @@ import {
   NAME,
   PLAYERBOAR,
   PLAYERBOARCLEAR,
+
 } from "../Actions/ActionsTypes";
 
 const initialState = {
   name: "",
   board: [],
   hits: [],
+
 };
 
 export default function rootReducer(state = initialState, action) {

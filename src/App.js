@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Game from "./Components/Game/Game";
 import StartGame from "./Components/Start/StartGame";
+import GameOver from "./Components/Game/GameOver";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
           </Route>
           <Route path="/game/:name?">
             <Game />
+          </Route>
+          <Route path="/gameover/:name?">
+            <GameOver />
           </Route>
         </Switch>
       </Router>

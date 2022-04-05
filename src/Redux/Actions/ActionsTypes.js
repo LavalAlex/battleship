@@ -8,6 +8,8 @@ const HITSPLAYER = "hitsPlayer";
 const HITSCOMPUTER = "histsComputer";
 const HITSPLAYERCLEAR = "hitsPlayerClear";
 const HITSCOMPUTERCLEAR = "hitsComputerClear";
+const WINNERGAME = "winnerGame"
+const GAMECLEAR = "gameClear"
 
 module.exports = {
   NAME,
@@ -19,5 +21,7 @@ module.exports = {
   HITSPLAYER,
   HITSCOMPUTER,
   HITSCOMPUTERCLEAR,
-  HITSPLAYERCLEAR
+  HITSPLAYERCLEAR,
+  WINNERGAME,
+  GAMECLEAR
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "./testUtils.test";
 import { ComputerBoard } from "../Computer/ComputerBoard";
-import { ships } from "../Mock/mockup";
+import { ships } from "../Mock/mockupTest";
 import { fireEvent } from "@testing-library/react";
 
 //Component computer board

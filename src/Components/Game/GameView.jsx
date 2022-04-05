@@ -5,6 +5,8 @@ import { ComputerBoard } from "../Computer/ComputerBoard";
 import PlayerTips from "../Player/PlayerTips";
 
 import styles from "./gameStyles.module.css";
+import { Redirect } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function GameView({
   availableShips,
@@ -28,8 +30,12 @@ export default function GameView({
   startAgain,
   setComputerShips,
   handleSurrender,
+  
 }) {
+  const {name} = useParams()
+
   return (
+    (winner === null?(
     <section id={styles.gameScreen}>
       {gameState !== "placement" ? (
         <PlayerTips
@@ -49,7 +55,6 @@ export default function GameView({
           startAgain={startAgain}
         />
       )}
-
       <PlayerBoard
         currentlyPlacing={currentlyPlacing}
         setCurrentlyPlacing={setCurrentlyPlacing}
@@ -58,7 +63,6 @@ export default function GameView({
         placedShips={placedShips}
         hitsByComputer={hitsByComputer}
       />
-
       <ComputerBoard
         computerShips={computerShips}
         changeTurn={changeTurn}
@@ -71,5 +75,6 @@ export default function GameView({
         setComputerShips={setComputerShips}
       />
     </section>
+    ):(<Redirect to={`/gameover/${name}`}/>))
   );
 }

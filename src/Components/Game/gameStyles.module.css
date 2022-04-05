@@ -1,7 +1,7 @@
 
 #gameScreen {
     display: flex;
-    flex-direction: row;
+    flex-direction:row;
     align-items: center;
   }
   
@@ -10,3 +10,41 @@
       flex-direction: column;
     }
   }
+
+  .playerTips{
+    width: 220px;
+    margin-left: 550px;
+    margin-top: 200px;
+  }
+  .tipFrame{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+    
+  }
+
+  .tipBoxTitle {
+    font-size: 22px;
+    text-transform: uppercase;
+    color: #f03e3e;
+    margin-bottom: 2rem;
+    justify-content: center;
+    /* margin-left: 60px; */
+  }
+
+
+.tipsButton button{
+  height: 2rem;
+  width: 6rem;
+  border: solid 2px;
+  cursor: pointer;
+  text-transform: capitalize;
+  font-family: 'Libre Franklin', sans-serif;
+  border-radius: 5px;
+}
+
+.tipsButton button:hover{
+  background-color: #15aabf;
+
+}

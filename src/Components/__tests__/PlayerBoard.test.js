@@ -1,10 +1,9 @@
 import React from "react";
 import { render } from "./testUtils.test";
 import PlayerBoard from "../Player/PlayerBoard";
-import { ships, hits } from "../Mock/mockup";
+import { ships, hits } from "../Mock/mockupTest";
 import { fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { Route } from "react-router-dom";
 
 //Component Player Board
 describe("Player Board", () => {
@@ -41,4 +40,5 @@ describe("Player Board", () => {
     fireEvent.click(div[0]);
     expect(div[0].parentNode).toHaveStyle("background: e3eaf0");
   });
+
 });

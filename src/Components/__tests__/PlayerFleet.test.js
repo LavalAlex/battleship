@@ -1,8 +1,8 @@
 import React from "react";
 import { render } from "./testUtils.test";
 import PlayerFleet from "../Player/PlayerFleet";
-import { shipsAvailable } from "../Mock/mockup";
-import { fireEvent, getByText } from "@testing-library/react";
+import { shipsAvailable } from "../Mock/mockupTest";
+import { fireEvent } from "@testing-library/react";
 
 //Accommodating the ships...
 describe("PlayerFleet with ships", () => {
@@ -43,24 +43,24 @@ describe("PlayerFleet with ships", () => {
   //Render select ships
   test("Render SelectBox and clicking the ships calls event handler once", async () => {
     const carrier = component.getByText("carrier");
-    const battleship = component.getByText("battleship");
-    const cruiser = component.getByText("cruiser");
+    const cruiser1 = component.getByText("cruiser-01");
+    const cruiser2 = component.getByText("cruiser-02");
+    const cruiser3 = component.getByText("cruiser-03");
     const submarine = component.getByText("submarine");
-    const destroyer = component.getByText("destroyer");
 
     fireEvent.click(carrier);
     expect(mockShip.call).toHaveLength(1);
 
-    fireEvent.click(battleship);
+    fireEvent.click(cruiser1);
     expect(mockShip.call).toHaveLength(1);
 
-    fireEvent.click(cruiser);
+    fireEvent.click(cruiser2);
+    expect(mockShip.call).toHaveLength(1);
+
+    fireEvent.click(cruiser3);
     expect(mockShip.call).toHaveLength(1);
 
     fireEvent.click(submarine);
-    expect(mockShip.call).toHaveLength(1);
-
-    fireEvent.click(destroyer);
     expect(mockShip.call).toHaveLength(1);
   });
 
