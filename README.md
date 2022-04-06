@@ -49,7 +49,7 @@ git clone https://github.com/LavalAlex/battleship.git
 
 2. Install NPM packages
 
-* client folder
+* folder the packe
 
 ```sh
 npm install
