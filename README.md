@@ -35,14 +35,14 @@
 
 <!-- ABOUT THE PROJECT -->
 
-## ABOUT THE PROJECT 
+## About The Project
 The classic game of  <a href="https://en.wikipedia.org/wiki/Battleship_(game)">BATTLESHIP  </a>
 
 
 
 
 <!-- GETTING STARTED -->
-## GETTING STARTED  
+## Getting Started 
 
 
 
