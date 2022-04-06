@@ -71,3 +71,9 @@ npm install
 
 <br />
 
+
+### Documentation:
+
+  <a href="https://github.com/LavalAlex/battleship/blob/master/docs/index.html">
+    Documentation
+  </a>
