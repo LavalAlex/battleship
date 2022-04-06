@@ -11,12 +11,14 @@
 <div align="center">
   <h3>GAME SCREEN</h3>
 </div>
+<div>
 <div align="right">
   <img src="img/game.png" alt="Logo" width="400" height="200">
 </div>  
 <div align="left">
   <img src="img/game-ship.png" alt="Logo" width="400" height="200">
 </div>
+  </div>
 <div align="center">
   <h3>END GAME SCREEN</h3>
 </div>
