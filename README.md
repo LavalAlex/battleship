@@ -1,44 +1,29 @@
-
-
 <div align="center">
   <h1 align="center">BATTLESHIP</h1>
 </div>
-
-
 
 <div align="center">
   <h3>START SCREEN</h3>
   <img src="img/start.png" alt="Logo" width="400" height="200">
 </div>  
 
-
-
 <div align="center">
   <h3>GAME SCREEN</h3>
 
 <img    src="img/game.png" alt="Logo" width="400" height="200">
-  <img  src="img/game-ship.png" alt="Logo" width="400" height="200">
+  <img  src="img/game-hit.png" alt="Logo" width="400" height="200">
 </div  >
 
 <div align="center">
   <h3>END GAME SCREEN</h3>
-
-<img    src="img/game-over.png" alt="Logo" width="400" height="200">
-
+  <img    src="img/game-over.png" alt="Logo" width="400" height="200">
 </div  >
-
-
-
- 
-
 
 
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
 The classic game of  <a href="https://en.wikipedia.org/wiki/Battleship_(game)">BATTLESHIP  </a>
-
-
 
 
 <!-- GETTING STARTED -->
