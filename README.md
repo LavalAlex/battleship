@@ -63,3 +63,7 @@ npm install
 ```sh
 npm run test
 ```
+
+
+### Documentation:
+To access the documentation, you must open the index.htm file that is located in the doc folder, in the browser
