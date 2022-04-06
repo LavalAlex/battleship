@@ -36,7 +36,7 @@
 <!-- ABOUT THE PROJECT -->
 
 ## ABOUT THE PROJECT 
-The classic game of BATTLESHIP <a href="https://en.wikipedia.org/wiki/Battleship_(game)">BATTLESHIP  </a>
+The classic game of  <a href="https://en.wikipedia.org/wiki/Battleship_(game)">BATTLESHIP  </a>
 
 
 
