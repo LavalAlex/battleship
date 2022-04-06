@@ -11,7 +11,7 @@
   <img src="img/start.png" alt="Logo" width="400" height="200">
 </div>  
 <br/>
-<div>
+
 <div align="center">
   <h3>GAME SCREEN</h3>
 </div>
@@ -19,11 +19,10 @@
   <img   src="img/game.png" alt="Logo" width="400" height="200">
 </div>
 
-  <div align="left"  width="400">
+  <div align="right"  width="400">
   
-  <img align="right" src="img/game-ship.png" alt="Logo" width="400" height="200">
+  <img src="img/game-ship.png" alt="Logo" width="400" height="200">
 </div>
- </div>
 <br/>
 
  
