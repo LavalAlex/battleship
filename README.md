@@ -15,12 +15,12 @@
   <img align="left"  src="img/game.png" alt="Logo" width="400" height="200">
 
   <img align="right" src="img/game-ship.png" alt="Logo" width="400" height="200">
-
-  </div>
+</div>
 <div align="center">
   <h3>END GAME SCREEN</h3>
+   <img src="img/game-over.png" alt="Logo" width="400" height="200">
 </div>
-  <img src="imag/game-over.png" alt="Logo" width="400" height="200">
+ 
 
 
 
