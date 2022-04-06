@@ -3,19 +3,22 @@
 <div align="center">
   <h1 align="center">BATTLESHIP</h1>
 </div>
+
 <br />
+
 <div align="center">
   <h3>START SCREEN</h3>
   <img src="img/start.png" alt="Logo" width="400" height="200">
 </div>  
+<br/>
 <div align="center">
   <h3>GAME SCREEN</h3>
 </div>
 <div>
   <img align="left"  src="img/game.png" alt="Logo" width="400" height="200">
-
   <img align="right" src="img/game-ship.png" alt="Logo" width="400" height="200">
 </div>
+<br/>
 <div align="center">
   <h3>END GAME SCREEN</h3>
    <img src="img/game-over.png" alt="Logo" width="400" height="200">
