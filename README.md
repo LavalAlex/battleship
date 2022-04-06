@@ -70,8 +70,6 @@ git clone https://github.com/LavalAlex/battleship.git
 npm install
 ```
 
-<br />
-
 
 ### Testing:
 
