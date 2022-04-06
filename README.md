@@ -41,7 +41,7 @@ The classic game of BATTLESHIP
 
 <br />
 <!-- GETTING STARTED -->
-## GETTING STARTED  
+### GETTING STARTED  
 
 
 
