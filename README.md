@@ -73,8 +73,10 @@ npm install
 <br />
 
 
-### Documentation:
+### Testing:
 
-  <a href="https://github.com/LavalAlex/battleship/blob/master/docs/index.html">
-    Documentation
-  </a>
+  * run test
+
+```sh
+npm run test
+```
