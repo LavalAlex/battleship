@@ -21,10 +21,7 @@
 </div>
  </div>
 <br/>
-<div align="center">
-  <h3>END GAME SCREEN</h3>
-   <img src="img/game-over.png" alt="Logo" width="400" height="200">
-</div>
+
  
 
 
