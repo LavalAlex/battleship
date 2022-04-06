@@ -1,6 +1,10 @@
 import React from "react";
 import styles from "./playerStyles.module.css";
 
+/**
+ * In this component it shows you the statistics of the game.
+ * @param{array} hitsbyPlayer
+ */
 export default function PlayerTips({
   hitsbyPlayer,
   handleSurrender,

@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { generateEmptyLayout } from "../Utils/Utils";
 import styles from "./stylesStart.module.css";
+import PropTypes from "prop-types";
+
+/**
+ *Fisrt app screen, receive player the name
+ */
 
 export default function StartGame() {
   const [player, setName] = useState({ name: "" });

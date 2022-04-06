@@ -3,6 +3,13 @@ import SelectBox from "../Select/SelectBox";
 
 import styles from "./playerStyles.module.css";
 
+/**
+ * In this component, the ships available to put on the board
+ * and the restart and start game buttons are rendered.
+ * @param{object} currentlyPlacing --Orientation ship
+ * @param{string} selectShip  --Ship selected by the player
+ * @param{object} availableShips --Mockup
+ */
 export default function PlayerFleet({
   availableShips,
   selectShip,

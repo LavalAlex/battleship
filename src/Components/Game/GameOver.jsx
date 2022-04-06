@@ -11,6 +11,9 @@ import {
 } from "../../Redux/Actions";
 import styles from "./gameStyles.module.css";
 
+/**
+ * Component that renders who won and a button that allows you to play again.
+ */
 export default function GameOver() {
   const winner = useSelector((state) => state.game.winner);
   const dispatch = useDispatch();

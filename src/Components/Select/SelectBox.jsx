@@ -1,13 +1,19 @@
 import React from "react";
 import styles from "./selectBox.module.css";
 
+/**
+ * Component that gives you the ships that the player can choose
+ * @param{string} shipName
+ * @param{string} selectShip  //Ship selected by the player
+ * @param{object} availableShips //Mockup
+ *@param{string}  isCurrentlyPlacing
+ */
 export default function SelectBox({
   shipName,
   selectShip,
   availableShips,
   isCurrentlyPlacing,
 }) {
-  
   let ship = availableShips.find((item) => item.name === shipName);
 
   let shipLength = new Array(ship.length).fill("ship");
