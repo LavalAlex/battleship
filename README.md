@@ -15,9 +15,9 @@
 <div align="center">
   <h3>GAME SCREEN</h3>
 </div>
-<div align="center">
-  <img  align="left"  src="img/game.png" alt="Logo" width="600" height="200">
-  <img align="right" src="img/game-ship.png" alt="Logo" width="600" height="200">
+<div align="center" >
+  <img  align="left"  src="img/game.png" alt="Logo" width="500" height="200">
+  <img align="right" src="img/game-ship.png" alt="Logo" width="500" height="200">
 </div>
 <div align="center">
   <h3>END GAME SCREEN</h3>
